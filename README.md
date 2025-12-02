@@ -5,6 +5,12 @@
 
 ### Scraping the Data
 
+Figure 2. Source songs.html
+
+In order to create data files from the contents of the web pages, I wrote Python code to "scrape" the web pages. Fortunately, the data I was looking for was always placed inside table components with a repeated format. I was able to extract the data and place it in a CSV (Comma Separated Value) text file and sort it. 
+
+Other data, such as song lyrics, event information, or images required the creation of separate text and image files.
+
 ### Creating Web Pages
 
 By using Python and Bootstrap layout templates, I was able to create a base HTML template which contained only the common header, navigation links, and footer.
