@@ -3,6 +3,14 @@
 
 ### Background
 
+Not long ago, Dan Gribbin appeared at our church to give a talk and perform some of his songs. During the talk, he mentioned that he had a web site with more information about him and his songs.
+
+Figure 1. Original songs.html web page
+
+I recently completed a Python course in which I learned how to create a dynamic web site from data files and how to "scrape" information from a web site's underlying HTML. 
+
+After viewing Dan Gribbin's web site, I saw that the underlying HTML was based on the old concept of using tables with styles embedded in the tags. So, I decided to apply what I had learned about using Python to "scrape" the data from Dan's web pages, create data files, and use Python to generate new web pages. 
+
 ### Scraping the Data
 
 Figure 2. Source songs.html
@@ -87,24 +95,12 @@ Data Item | CSV Files | Text Files
 
 ## Conclusion
 
-The hardest part of this project was "scraping" the data from the original HTML 
-files. Tables were nested inside tables; only by identifying the specific height or 
-width attributes in the table **\<tr\>** rows, **\<th\>** headings, and **\<td\>** data columns 
-was it finally possible to identify the and extract relevant data. 
+The hardest part of this project was "scraping" the data from the original HTML files. Tables were nested inside tables; only by identifying the specific height or width attributes in the table **\<tr\>** rows, **\<th\>** headings, and **\<td\>** data columns was it finally possible to identify the and extract relevant data. 
 
-Links to audio files for listening and purchasing were sometimes broken, making 
-automation extraction difficult. Each album and song links needed to be 
-validated. Song lyrics were extracted into individual text files, and identified by 
-song number. Events were likewise extracted into individual text files and 
-identified by event number.
+Links to audio files for listening and purchasing were sometimes broken, making automation extraction difficult. Each album and song links needed to be validated. Song lyrics were extracted into individual text files, and identified by song number. Events were likewise extracted into individual text files and identified by event number.
 
 ## Future Work
 
-Missing from the web site is the ability of the owner to add songs, events, links, 
-and pictures. New **add_song.html**, **add_event.html**, **add_link.html**, and 
-**add_image.html** web pages with input forms would need to be written, with 
-additional Python functions designed to extract the information and append them 
-to existing data files.
+Missing from the web site is the ability of the owner to add songs, events, links, and pictures. New **add_song.html**, **add_event.html**, **add_link.html**, and **add_image.html** web pages with input forms would need to be written, with additional Python functions designed to extract the information and append them to existing data files.
 
-Finally, the entire web site with web pages, styles, data files, and Python code 
-would need to be transported to a web server that supports dynamic data.
+Finally, the entire web site with web pages, styles, data files, and Python code would need to be transported to a web server that supports dynamic data.
