@@ -7,6 +7,12 @@
 
 ### Creating Web Pages
 
+By using Python and Bootstrap layout templates, I was able to create a base HTML template which contained only the common header, navigation links, and footer.
+
+In place of the original HTML which used tables to layout the web page, I created a **layout.html** template which used a semantic layout for each page  with a **\<header\>**, **\<main\>** with a **\<section class="content"\>**, and **\<footer\>** HTML tags which made the underlying content much more understandable.
+
+For example, knowing that the **songs.csv** data file contained the song number, the song title with an information link, a play link, and a buy link for each song, the **songs.html** web page was laid out using a table with four (4) columns, and each row contained the individual song information. Play links and buy links were only included if present in the **songs.csv** data file.
+
 ### Generating Web Pages
 
 The Python **main.py** program was written with functions (def's) to determine which web page to display and pass data to the page to display.  
