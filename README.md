@@ -15,6 +15,34 @@
 
 ### Data Files
 
+Data needed to populate the web pages was "scraped" from the old HTML pages 
+through the use of Python procedures. These procedures were used only once to 
+extract the required data and place it in CSV or Text files.
+
+Table 2. Get Data Procedures Lines of Code
+Lines | Python File Name
+----- | ----------------
+  141 | get_album_data.py
+   34 | get_albums_data.py
+  107 | get_event_data.py
+   58 | get_events_data.py
+   44 | get_links_data.py
+   88 | get_news_data.py
+  105 | get_photo_data.py
+  238 | get_song_data.py
+   46 | get_songs_data.py
+  862 | **total**
+
+Table 3. Data Files
+Data Item | CSV Files | Text Files
+--------- | --------- | ----------
+   Albums |         6 |          4
+   Events |         2 |         84
+   Songs  |         3 |         48
+**Totals** |   **11** |      **136**
+
+
+
 ## Conclusion
 
 The hardest part of this project was "scraping" the data from the original HTML 
