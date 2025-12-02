@@ -13,11 +13,31 @@
 
 ### Comparison Statistics
 
+The original "Old" HTML files contained 3,393 lines; mostly made up of HTML head data and repeating lines of individual items, such as albums, events, and songs. These files were written using tables with embedded width and height attributes to layout side bars and contents. This table-layout style was popular during the early days of web design, and made it difficult to determine the meaning of the various table rows and columns.
+
+The redesigned "New" HTML files contained 1,114 lines, including a **layout.html** file that became the template for all the other web pages; it included header and footer information. The new HTML files contained **\<main\>**, **\<header\>**, **\<section\>**, **\<article\>** and **\<footer\>** "semantic" tags which clearly identified the content.  In addition, Bootstrap was used to format the content. The resultant web site, including the Python code, was about a quarter the size of the original site.
+
+Table 1. Web Site Metrics
+Web Site Page | Old HTML Lines | New HTML Lines | New py Lines | Total New Lines
+--------- | -------- | -------- | ------ | -----
+albums.html | 161 | 63 | 6 | 69
+album.html | 265 | 133 | 14 | 147
+bio.html | 130 | 39 | 3 | 42
+contact.html | 159 | 56 | 1 | 57
+events.html | 132 | 47 | 6 | 53
+event.html | 195 | 125 | 11 | 136
+index.html | 146 | 51 | 1 | 52
+links.html | 149 | 45 | 6 | 51
+layout.html | 0 | 142 | 0 | 142
+news.html | 1762 | 34 | 3 | 37
+photos.html | 292 | 79 | 6 | 85
+songs.html | 462 | 52 | 6 | 58
+song.html | 258 | 158 | 14 | 172
+**totals** | **3,393** | **1,114** | **77** | **1.101**
+
 ### Data Files
 
-Data needed to populate the web pages was "scraped" from the old HTML pages 
-through the use of Python procedures. These procedures were used only once to 
-extract the required data and place it in CSV or Text files.
+Data needed to populate the web pages was "scraped" from the old HTML pages through the use of Python procedures. These procedures were used only once to extract the required data and place it in CSV or Text files.
 
 Table 2. Get Data Procedures Lines of Code
 Lines | Python File Name
@@ -47,7 +67,7 @@ Data Item | CSV Files | Text Files
 
 The hardest part of this project was "scraping" the data from the original HTML 
 files. Tables were nested inside tables; only by identifying the specific height or 
-width attributes in the table **<tr>** rows, **<th>** headings, and **<td>** data columns 
+width attributes in the table **\<tr\>** rows, **\<th\>** headings, and **\<td\>** data columns 
 was it finally possible to identify the and extract relevant data. 
 
 Links to audio files for listening and purchasing were sometimes broken, making 
@@ -59,8 +79,8 @@ identified by event number.
 ## Future Work
 
 Missing from the web site is the ability of the owner to add songs, events, links, 
-and pictures. New add_song.html, add_event.html, add_link.html, and 
-add_image.html web pages with input forms would need to be written, with 
+and pictures. New **add_song.html**, **add_event.html**, **add_link.html**, and 
+**add_image.html** web pages with input forms would need to be written, with 
 additional Python functions designed to extract the information and append them 
 to existing data files.
 
