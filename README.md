@@ -11,6 +11,10 @@
 
 ### Results
 
+The resultant web site consists of fourteen (14) web pages: about, album (single album with songs list), albums (list of albumns), contact, event (single event information), events (list of events), gallery, index (home page), layout, links, news, photos, song (information about individual song), and songs (list of songs). 
+
+Because the web site used Bootstrap for content layout and styles, only three CSS (Cascading Style Sheets) were written: **dg_gradient_palettes.css** (colors from original site), **dg_styles.css** (web site styles), and **dg_contact_form_postcard.css** (fonts and formats to define the contact page).
+
 ### Comparison Statistics
 
 The original "Old" HTML files contained 3,393 lines; mostly made up of HTML head data and repeating lines of individual items, such as albums, events, and songs. These files were written using tables with embedded width and height attributes to layout side bars and contents. This table-layout style was popular during the early days of web design, and made it difficult to determine the meaning of the various table rows and columns.
