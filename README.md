@@ -5,7 +5,8 @@
 
 Not long ago, Dan Gribbin appeared at our church to give a talk and perform some of his songs. During the talk, he mentioned that he had a web site with more information about him and his songs.
 
-Figure 1. Original songs.html web page
+![Old songs.html web page](old_website_screenshots/old%20songs.html%20screen.png)
+Figure 1. Old **songs.html** web page
 
 I recently completed a Python course in which I learned how to create a dynamic web site from data files and how to "scrape" information from a web site's underlying HTML. 
 
@@ -13,7 +14,8 @@ After viewing Dan Gribbin's web site, I saw that the underlying HTML was based o
 
 ### Scraping the Data
 
-Figure 2. Source songs.html
+![Old songs.html source code](old_website_screenshots/old%20songs.html%20code.png)
+Figure 2. Old **songs.html** source
 
 In order to create data files from the contents of the web pages, I wrote Python code to "scrape" the web pages. Fortunately, the data I was looking for was always placed inside table components with a repeated format. I was able to extract the data and place it in a CSV (Comma Separated Value) text file and sort it. 
 
@@ -39,7 +41,8 @@ The resultant web site consists of fourteen (14) web pages: about, album (single
 
 Because the web site used Bootstrap for content layout and styles, only three CSS (Cascading Style Sheets) were written: **dg_gradient_palettes.css** (colors from original site), **dg_styles.css** (web site styles), and **dg_contact_form_postcard.css** (fonts and formats to define the contact page).
 
-Figure 3. Redesigned **songs.html** web page.
+![Old songs.html source code](old_website_screenshots/new%20songs.html%20screen.png)
+Figure 3. New **songs.html** web page.
 
 ### Comparison Statistics
 
