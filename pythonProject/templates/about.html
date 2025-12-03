@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}}
+
+{% block styles %}
+{{ super() }}
+{% endblock %}
+
+{% block title %}Dan Gribbin | About Me{% endblock %}
+
+{% block content %}
+
+<article class="card">
+    <div class="row g-0">
+        <div class="col-md-4 ps-2" >
+            <figure class="m-2">
+                <img src="https://d3ck8ztij7t71z.cloudfront.net/33/33952/33952_279316.jpg"
+                    alt="Dan's photo"
+                    style="background-color:white;padding:10px;border:solid 1px grey; box-shadow:5px 5px #cdcdcd;">
+                <figcaption></figcaption>
+            </figure>
+        </div><!-- end class="col-md-4 -->
+        <div class="col-md-8 mt-1 ps-4">
+            <div class="card-body ps-4">
+                <h5 class="card-title ps-2">Dan Gribbin - About Me</h5>
+                <h6 class="card-subtitle ps-2 text-muted">A Musical Journey</h6>
+                <p class="card-text text-muted ps-2 pt-2">
+                    With the release here in the summer of 2018 of the new CD, "Florida in My Soul,"
+                    I find myself surrounded by musical friends every weekend. The Unitarian Universalist
+                    Congregation of Ormond Beach, where I have a hand in the programming, is the site of
+                    much of this activity. But the Will McLean Festival puts me in touch with fellow fans
+                    of Pete Seeger, who have encouraged me to record "Pete Seeger in Paradise" on the new
+                    album. And I must put in a plug for the Lake County Folk Festival, where "The Deadbeat"
+                    won Best Funny Song, last fall. Please give a listen to "A Friend Like You," where Al
+                    Scortino adds his terrific dobro. It's a full musical life!
+                </p>
+            </div><!-- end class .card-body -->
+        </div><!-- end class .col-md-8 -->
+    </div><!-- end class .row -->
+</article><!-- end class .card -->
+{% endblock %}

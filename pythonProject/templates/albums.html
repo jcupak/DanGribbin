@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<style rel="stylesheet">
+    img {height:100px;}
+    table {width:250px; background-color: var(--gray-100); border:1px solid red;}
+    table > thead {background-color:var(--khaki-200);}
+</style>
+{% endblock %}
+
+{% block title %}Dan Gribbin | Albums{% endblock %}
+
+{% block content %}
+<article class="container p-2 m-2">
+    <section class="row p-2 m-2">
+
+        <h1>Dan Gribbin - Albums</h1>
+
+        <table id="dg_albums_table" class="table table-bordered table-striped col-6">
+            <thead>
+                <tr style="background-color:var(--khaki-200);">
+                    <th width="50">Album</th>
+                    <th width="100">Title</th>
+                    <th width=" 50">Info Link</th>
+                    <th width=" 50">BUY Link</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in albums %}
+            <!-- row[0] Album Link to Info and Track web page -->
+            <!-- row[1] Album Title                           -->
+            <!-- row[2] Album Image (on cloudfront.net)       -->
+            <!-- row[3] Album Buy link (to CDBaby - broken)   -->
+            <tr>
+                <td>
+                    <img src="https://d3ck8ztij7t71z.cloudfront.net/33/33952/{{ row[2] }}"><!-- Album image -->
+                </td>
+                <th>{{ row[1] }}</th><!-- Album title -->
+                <td>
+                    <a href="{{ url_for('album', id=row[0]) }}"
+                       class="btn btn-primary btn-sm" role="button"
+                       title="album/{{ row[0] }}">INFO</a><!-- Album info button link -->
+                </td>
+                <!-- Album buy button link -->
+                {% if row[3] == "" %}
+                    <!-- Album buy unavailable -->
+                    <td><button type="button" class="btn btn-secondary btn-sm" disabled>UNAVAILABLE</button></td>
+                {% else %}
+                    <!-- Album buy link to CDbaby broken -->
+                    <td><button type="button" class="btn btn-success btn-sm" disabled>BUY</button></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <p><a href="{{ url_for('index') }}"
+          class="btn btn-warning btn-lg" role="button">Return to Home page <span class="bi-house-fill"></span></a>
+    </p>
+</article>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}}
+
+{% block styles %}
+{{ super() }}
+<style rel="stylesheet">
+</style>
+{% endblock %}
+
+{% block title %}Dan Gribbin - News{% endblock %}
+
+{% block content %}
+<section>
+
+        <h1>Dan Gribbin - News</h1>
+
+        {% for item in news %}
+            {% if item.startswith('Title:') %}
+                {# End of previous news item and card #}
+                     </div><!-- end class .card-body -->
+                </div><!-- end class .card -->
+                <div class="card bg-light p-3 m-3">
+                    <div class="card-body">
+                         <h3 class="card-title">{{ item }}</h3>
+            {% elif item.startswith('Posted:') %}
+                         <h4 class="card-subtitle mb-2 text-muted">{{ item }}</h4>
+            {% else %}
+                        <p class="card-text">
+                            {{ item }}
+                        </p>
+            {% endif %}
+        {% endfor %}
+
+</section>
+{% endblock %}

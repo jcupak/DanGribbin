@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<meta NAME="description" CONTENT="Welcome to the website of Dan Gribbin, singer/songwriter/guitarist.  Dan's original compositions offer a mix of environmental folk music, social satire, and blues with the occasional country, rock, or pop number thrown in for seasoning.  Dan lives in Daytona Beach Shores but often plays for Sunday services at the UU church in Ormond Beach.  Winner of the 2004 Comic Song of the Year award (from Songwriters Showcase of America) and the 2017 Funny Song Contest at the Lake County Folk Festival, Dan does commit humor on a regular basis.  He performs at the Will McLean Festival and does the occasional concert at the Bermuda Aquarium and Zoo.  Dan also sings with the folk revival trio Work Release Program, covering songs by The Kingston Trio and other folk favorites.  His fourth CD, "Florida in My Soul," was released in July 2018.">
+<meta NAME="keywords" CONTENT="gribbin, dan gribbin, daniel gribbin, folk music, folk musician, musician, blues, songwriter, social satire, Florida, Central Florida, Daytona Beach, guitarist, blues guitarist, birding, bird songs, Audubon, songs about birds. ">
+{% endblock %}
+
+{% block title %}Dan Gribbin | Home{% endblock %}
+
+{% block content %}
+<article class="jumbotron text-center">
+  <section class="container">
+
+    <h1 class="display-4">🎶 Dan Gribbin - Home Page 🎶</h1>
+
+    <figure style="margin:20px auto;">
+      <img src="https://d3ck8ztij7t71z.cloudfront.net/33/33952/33952_279316.jpg"
+           alt="Dan's photo"
+           style="background-color:white;padding:20px;border:solid 1px grey; box-shadow:10px 10px #cdcdcd;">
+      <figcaption></figcaption>
+    </figure>
+
+    <p class="lead">Want to listen to some of Dan's music?</p>
+
+    <hr class="my-3">
+
+    <p>You've found the right place! Check out the collection of
+    albums and songs written and performed by Dan.</p>
+
+    <a class="btn btn-warning btn-lg" role="button"
+       href="{{ url_for('albums') }}">Show Me the Albums! <span class="bi-disc"></span></a>
+
+    <a class="btn btn-warning btn-lg" role="button"
+       href="{{ url_for('songs') }}">Show Me the Songs! <span class="bi-music-note-beamed"></span></a>
+
+    <a class="btn btn-warning btn-lg" role="button"
+       href="{{ url_for('gallery') }}">Show Me Dan's Photos! <span class="bi-images"></span></a>
+
+    <a class="btn btn-warning btn-lg" role="button"
+       href="{{ url_for('links') }}">Show Me Dan's Links! <span class="bi-link-45deg"></span></a>
+
+  </section>
+</article>
+{% endblock %}
+
+        <p><a href="{{ url_for('index') }}"
+              class="btn btn-warning btn-lg" role="button"><span class="bi-house-fill"></span> Return to Home page.</a>
+            <a href="{{ url_for('songs') }}"
+               class="btn btn-warning btn-lg" role="button"><span class="bi-disc"></span> Return to Songs page</a>
+        </p>

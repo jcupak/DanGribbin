@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<style rel="stylesheet">
+    table {width:300px;background-color:white;}
+    thead th {text-align: center;}
+</style>
+{% endblock %}
+
+{% block title %}Dan Gribbin | Events{% endblock %}
+
+{% block content %}
+<article class="container">
+    <section class="row m-2 p-2">
+
+        <h1>Dan Gribbin - Events</h1>
+        <h2>Past Dates</h2>
+        <table id="dg_events_table" class="table table-bordered border-primary table-striped col-6">
+            <thead>
+                <tr style="background-color:var(--khaki-200);">
+                    <th>Event</th>
+                    <th>Location</th>
+                    <th>Venue</th>
+                    <th>Date</th>
+                    <th>View</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event[0] }}</td>
+                <td style="text-align:left;">{{ event[1] }}</td>
+                <td style="text-align:left;">{{ event[2] }}</td>
+                <td>{{ event[3] }}</td>
+                <td>
+                     <a href="{{ url_for('event', id=event[0]) }}"
+                       class="btn btn-primary btn-sm" role="button"
+                       title="event/{{ event[0] }}">INFO</a><!-- Event info button link -->
+               </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</article>
+{% endblock %}

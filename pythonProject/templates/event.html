@@ -1,0 +1,125 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<style rel="stylesheet">
+    dl {display: grid; grid-template-columns: 10em auto;}
+    dt {font-weight: bold; grid-column: 1}
+    dd {grid-column: 2}
+</style>
+{% endblock %}
+
+{% block title %}Dan Gribbin | Event/{{event[0]}}{% endblock %}
+
+{% block content %}
+<!-- This Web page displays the Dan Gribbin Event information as three bootstrap cards,            -->
+<!-- with each event category and information displayed in a <dl> description list                 -->
+<!-- containing the category as a <dt> description list term, and a <dd> description list item     -->
+<!-- The footer containing additional Press, Directions, or Other information  is also displayed   -->
+<!-- as a bootstrap card. Links to Google or Mapquest maps or additional information are displayed -->
+<!-- as clickable links.  Note: Some missing event information may be displayed as a blank line.   -->
+<div class="container">
+    <article class="row my-1">
+
+        <h1>Dan Gribbin - Events</h1>
+        <h2>Event #{{event[0]}}</h2>
+
+        <section class="container">
+            <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+                <div class="card-body col col-md-auto">
+                    <h3 class="card-title pb-2 border-bottom">General Overview</h3>
+                    <dl>
+                        <dt>Venue:</dt><dd>{{event[1]}}</dd>
+                        <dt>Date:</dt><dd>{{event[2]}}</dd>
+                        <dt>Time:</dt><dd>{{event[3]}}</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="card border-dark ps-0 mt-1 mx-auto shadow">
+                <div class="card-body">
+                    <h3 class="card-title pb-2 border-bottom">Venue Info</h3>
+                    <dl>
+                        <dt>Address:</dt><dd>{{event[4]}}</dd>
+                        <dt>City:</dt><dd>{{event[5]}}</dd>
+                        <dt>State:</dt><dd>{{event[6]}}</dd>
+                        <dt>Zip Code:</dt><dd>{{event[7]}}</dd>
+                        <dt>Country:</dt><dd>{{event[8]}}</dd>
+                        <dt>Website:</dt>
+                        <dd>
+                            {% if event[9] == "NONE" %}
+                                Unavailable
+                            {% else %}
+                                <a href="{{event[9]}}">{{event[9]}}</a>
+                            {% endif %}
+                        </dd>
+                        <dt>Telephone:</dt><dd>{{event[10]}}</dd>
+                    </dl>
+                </div>
+            </div>
+
+             <div class="card border-dark ps-0 mt-1 mx-auto shadow">
+                <div class="card-body">
+                   <h3 class="card-title pb-2 border-bottom">Misc. Info</h3>
+                    <dl>
+                        <dt>Cover Charge:</dt><dd>{{event[11]}}</dd>
+                        <dt>Age Requirement:</dt><dd>{{event[12]}}</dd>
+                    </dl>
+                </div>
+             </div>
+
+            <div class="card border-dark bg-light ps-0 mt-1 mx-auto shadow">
+                <div class="card-body">
+                    <h3 class="card-tite pb-2 border-bottom">Additional Information</h3>
+                    {% for item in footer %}
+                        {% if item[0:6] == "Press:" or item[0:11] == "Directions:" or item[0:6] == "Other:" %}
+                            <h5>{{ item }}</h5>
+                        {% else %}
+                            {% if 'mapquest' in item %}
+                                <p>View map on <a href="{{ item }}">Mapquest</a></p>
+                            {% elif 'google' in item %}
+                                <p>View map on <a href="{{ item }}">Google Maps</a></p>
+                            {% elif 'http' in item %}
+                                <p>For more information, see this <a href="{{ item }}">Web site</a></p>
+                            {% else %}
+                                <p>{{ item }}</p>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                 </div>
+            </div>
+
+        </section>
+
+        <p><a href="{{ url_for('index') }}"
+              class="btn btn-warning btn-lg" role="button"><span class="bi-house-fill"></span> Return to Home page</a>
+            <a href="{{ url_for('events') }}"
+               class="btn btn-warning btn-lg" role="button">Return to Events page</a>
+            <!-- Get current event number -->
+            {% set current_event = event[0] | int %}
+            <!-- Compute previous event number or 0 if at beginning -->
+            {% if current_event > 0 %}
+                {% set previous_event = current_event-1 %}
+            {% else %}
+                {% set previous_event = current_event %}
+            {% endif %}
+            <!-- Create button with link to previous or first (0) event -->
+            <a href="{{ url_for('event', id=previous_event) }}"
+               class="btn btn-warning btn-lg" role="button"><span class="bi-caret-left-fill"></span>Go to Previous event</a>
+            <!-- Compute next event number of 83 if at last event -->
+            {% if current_event < 83 %}
+                {% set next_event = current_event+1 %}
+            {% else %}
+                {% set next_event = current_event %}
+            {% endif %}
+            <!-- Create button with link to next or last event -->
+            <a href="{{ url_for('event', id=next_event) }}"
+               class="btn btn-warning btn-lg" role="button">Got to Next event <span class="bi-caret-right-fill"></span></a>
+        </p>
+
+    </article>
+
+</div><!-- end class .container -->
+
+
+{% endblock %}

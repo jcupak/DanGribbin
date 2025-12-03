@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+	
+	<head>
+		<meta charset="UTF-8">
+  		<meta name="viewport"    content="width=device-width, initial-scale=1">
+		<meta name="description" content="Dan Gribbin's Photos">
+		<meta name="keywords"    content="Pictures, Photos, Gallery">
+		<meta name="copyright"   content="Dan Gribbin 2023">
+		<meta name="author"      content="John J Cupak Jr, john.cupak@me.com">
+		<meta name="revised"     content="Wednesday, March 1, 2023">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>{% block title %}{% endblock %}</title>
+  
+		<!-- Google Fonts                     -->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Martel:wght@300;400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap"  rel="stylesheet">
+		  
+		<!-- Bootstrap 5.3.0-alpha1 Styles           -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+		      rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+			  crossorigin="anonymous">
+
+		<!-- Bootstrap 5.3.0-alpha1 JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+				integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+				crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+				integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+				crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+				crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+
+		<!-- Bootstrap icon fonts stylesheet -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+		<!-- Site styles                      -->
+		<link rel=stylesheet href="{{ url_for('static', filename='css/dg_gradient_palettes.css')}}">
+		<link rel=stylesheet href="{{ url_for('static', filename='css/dg_styles.css')}}">
+
+		<!-- Page specific styles -->
+		{% block styles %}
+		{% endblock %}
+
+	</head>
+	
+	<body>
+		
+		<header id="header" class="border-bottom shadow-sm">
+			
+			<div class="container-fluid">
+				
+				<nav class="navbar navbar-expand-lg navbar-light">
+					
+					<!-- This links to the home (index.html) Dan Gribbin Web page -->
+  					<a class="navbar-brand" href="{{ url_for('index') }}">Dan Gribbin</a>
+					  
+					<!-- This "hamburger" button only appears on smaller screens -->
+  					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+  					</button>
+					  
+					<!-- The navigation bar collapses on smaller screens -->
+  					<div class="collapse navbar-collapse" id="navbarText">
+						  
+						<!-- Targets to href links are on separate Web pages -->
+						<ul class="navbar-nav ms-auto"><!-- Was mr-auto -->
+							
+	  						<li {% if request.endpoint=='songs' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+								<a class="nav-link" href="{{ url_for('songs') }}">Songs</a>
+	  						</li>
+						  	
+	  						<li {% if request.endpoint=='albums' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+								<a  class="nav-link" href="{{ url_for('albums') }}">Albums</a>
+	  						</li>
+						  	
+	  						<li {% if request.endpoint=='gallery' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+								<a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+	  						</li>
+						  	
+							<li {% if request.endpoint=='events' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+								  <a class="nav-link" href="{{ url_for('events') }}">Events</a>
+							</li>
+							  
+							<li {% if request.endpoint=='news' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+									<a class="nav-link" href="{{ url_for('news') }}">News</a>
+							</li>
+								
+							<li {% if request.endpoint=='about' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+									  <a class="nav-link" href="{{ url_for('about') }}">About</a>
+							</li>
+								  
+							<li {% if request.endpoint=='links' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+									  <a class="nav-link" href="{{ url_for('links') }}">Links</a>
+							</li>
+								  
+							<li {% if request.endpoint=='contact' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+										<a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+							</li>
+									
+						</ul><!-- end class .navbar-nav -->
+  					</div><!-- end class .collapse -->
+				</nav><!-- end class .navbar -->
+			</div><!-- end class .container-fluid -->
+		</header><!-- end id #header -->
+		
+		<main>
+	
+			<section class="content"> 
+				
+  				{% block content %}
+				  <h1>Dan Gribbin</h1>
+				  <h2>Site Layout</h2>
+				{% endblock %}
+				  
+			</section><!-- end class .content -->
+	
+		</main>
+		<!-- TODO Could Make this a separate block  -->
+  		<footer id="footer" class="d-flex flex-row justify-content-between align-items-center p-3">
+		
+		  <h6>Copyright &copy;&nbsp;2023
+			<a href="{{ url_for('index') }}" title="Dan Gribbin Home">Dan Gribbin</a>
+		  </h6>
+	
+		  <section class="social-links" >
+			<i class="bi-facebook"><a href="https://www.facebook.com/dan.gribbin.3" target="_blank"
+			   title="Dan Gribbin's Facebook page"></a></i>
+			  <i class="bi-youtube"><a href="https://youtu.be/6p59RG5n8LI" target="_blank"
+			     title="Dan Gribbin's YouTube page"></a></i>
+		  </section>
+	
+	  </footer>
+
+	</body>
+	
+</html>

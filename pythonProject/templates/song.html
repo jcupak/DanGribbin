@@ -1,0 +1,158 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<!-- The source for this web page was extracted from Dan Gribbin's original song/# Web page.  -->
+<!-- Although the Credits, Description, and Metadata have fixed labels, the contents of these -->
+<!-- sections do not appear in all song web pages, and will appear blank if the original web  -->
+<!-- page either omitted the label contents or omitted the label and contents entirely.       -->
+<style rel="stylesheet">
+    dl {display: grid; grid-template-columns: 13em auto;}  <!-- Display list as 2 columns 1 line -->
+    dt {grid-column: 1; font-weight: bold; }               <!-- Display term bold in column 1    -->
+    dd {grid-column: 2;}                                   <!-- Display definition in column 2   -->
+</style>
+{% endblock %}
+
+{% block title %}Dan Gribbin - Song/{{song[0]}}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <article class="row my-1">
+
+        <h1>Dan Gribbin - Song</h1>
+
+        <!-- Song number, name, play link, and optional buy link section-->
+        <section class="container">
+            <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+                <div class="card-body">
+                    <h2 class="card-title pb-2 border-bottom">
+                        Song #{{song[0]}} -
+                        &ldquo;{{song[1]}}&rdquo; <!-- Song name -->
+                    </h2>
+                    <p>
+                        <a href="http://www.broadjam.com/player/player.php?hosting=1&play_file={{ song[2] }}"
+                               class="btn btn-primary btn-sm" role="button" title="Play link">PLAY</a>
+                        <!-- Only show BUY button if file link exists -->
+                        {% if song[3] != '' %}
+                            <a href="http://www.broadjam.com/shoppingcart/add.php?cit=is&ciid={{ song[3] }}"
+                               class="btn btn-success btn-sm" title="Buy Link" role="button">BUY</a>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </section><!-- end Song class .container -->
+
+        <!-- Credits section -->
+        <section class="container">
+            <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+                <div class="card-body col col-md-auto">
+                    <h3 class="card-title pb-2 border-bottom">Credits</h3>
+                    <dl>
+                        <dt>Lyric Credits:      </dt><dd>{{ song[4] }}</dd>
+                        <dt>Music Credits:      </dt><dd>{{ song[5] }}</dd>
+                        <dt>Producer Credits:   </dt><dd>{{ song[6] }}</dd>
+                        <dt>Publisher Credits:  </dt><dd>{{ song[7] }}</dd>
+                        <dt>Performance Credits:</dt><dd>{{ song[8] }}</dd>
+                        <dt>Label Credits       </dt><dd>{{ song[9] }}</dd>
+                    </dl>
+                </div><!-- end class .card-body -->
+            </div><!-- end class .card -->
+        </section>
+
+        <!-- Description section -->
+        <section class="container">
+            <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+                <div class="card-body col col-md-auto">
+                    <h3 class="card-title pb-2 border-bottom">Description</h3>
+                    <h4>Short Song Description:</h4>
+                    <p>{{ song[10] }}</p>
+                    <h4>Long Song Description:</h4>
+                    <p>{{ song[11] }}</p>
+                    <h4>Story Behind the Song:</h4>
+                    <p>{{ song[12] }}</p>
+                </div><!-- end class .card_body -->
+            </div><!-- end class .card -->
+        </section>
+
+        <!-- Metadata section -->
+        <section class="container">
+            <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+                <div class="card-body col col-md-auto">
+                    <h3 class="card-title pb-2 border-bottom">Metadata</h3>
+                    <dl>
+                        <dt>Song Length:     </dt><dd>{{ song[13] }}</dd>
+                        <dt>Primary Genre:   </dt><dd>{{ song[14] }}</dd>
+                        <dt>Tempo/Feel 1:    </dt><dd>{{ song[15] }}</dd>
+                        <dt>Tempo/Feel 2:    </dt><dd>{{ song[16] }}</dd>
+                        <dt>Lead Vocal:      </dt><dd>{{ song[17] }}</dd>
+                        <dt>Subject Matter 1:</dt><dd>{{ song[18] }}</dd>
+                        <dt>Subject Matter 2:</dt><dd>{{ song[19] }}</dd>
+                        <dt>Mood 1:          </dt><dd>{{ song[20] }}</dd>
+                        <dt>Mood 2:          </dt><dd>{{ song[21] }}</dd>
+                        <dt>Language:        </dt><dd>{{ song[22] }}</dd>
+                        <dt>Era:             </dt><dd>{{ song[23] }}</dd>
+                    </dl>
+                </div><!-- end class .card-body -->
+            </div><!-- end class .card -->
+        </section>
+
+        <!-- Lyrics section -->
+        <section class="container">
+            <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+                <div class="card-body col col-md-auto">
+                    <h3 class="card-title pb-2 border-bottom">Lyrics</h3>
+<pre>{{ lyrics }}</pre>
+                </div><!-- end class .card-body -->
+            </div><!-- end class .card -->
+
+        </section><!-- end class .container -->
+
+        <!-- Buttons to other web pages -->
+        <p>
+            <a href="{{ url_for('index') }}"
+              class="btn btn-warning btn-lg" role="button">Return to Home page <span class="bi-house-fill"></span></a>
+            <a href="{{ url_for('songs') }}"
+               class="btn btn-warning btn-lg" role="button">Return to Songs page <span class="bi-music-note-beamed"></span></a>
+
+            <!-- Create button with link to previous or first (0) event -->
+            <!-- Get current song number -->
+            {% set current_song = song[0] | int %}
+            <!-- Compute previous event number or 0 if at beginning -->
+            {% if current_song > 0 %}
+                {% set previous_song = current_song-1 %}
+                <a href="{{ url_for('song', id=previous_song) }}"
+                   class="btn btn-warning btn-lg" role="button">
+                    <span class="bi-caret-left-fill"></span>
+                    Go to Previous song ({{ previous_song }})
+                </a>
+            {% else %}
+                {% set previous_song = current_song %}
+                <button type="button" name="Disabled"
+                        class="btn btn-secondary btn-lg" disabled>
+                    <span class="bi-x-lg"></span>
+                    At First song ({{ previous_song }})
+                </button>
+            {% endif %}
+            <!-- Compute next event number of 83 if at last event -->
+            {% if current_song < 47 %}
+                {% set next_song = current_song+1 %}
+                 <a href="{{ url_for('song', id=next_song) }}"
+                   class="btn btn-warning btn-lg" role="button">
+                    Got to Next song ({{ next_song }})
+                    <span class="bi-caret-right-fill"></span>
+                </a>
+           {% else %}
+                {% set next_song = current_song %}
+                <button type="button" name="Disabled"
+                   class="btn btn-secondary btn-lg" disabled>
+                    At Last song ({{ next_song }})
+                    <span class="bi-x-lg"></span>
+                </button>
+            {% endif %}
+            <!-- Create button with link to next or last event -->
+        </p>
+
+    </article>
+</div><!-- end class .container -->
+
+{% endblock %}

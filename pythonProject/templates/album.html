@@ -1,0 +1,133 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<style rel="stylesheet">
+    table {width:300px;background-color:white;}
+    th {text-align: center;}
+    thead th span {font-size: .9em; color:grey;}
+</style>
+{% endblock %}
+
+{% block title %}Dan Gribbin | Album{% endblock %}
+
+{% block content %}
+<div class="container">
+    <article class="row my-1">
+
+        <h1>Dan Gribbin - Album</h1>
+
+        <section class="row my-1">
+
+            <!-- Display album title, image, and description information (if present) -->
+            <div class="card mb-3 border border-dark col-md-5">
+                <div class="row g-0">
+                    <div class="col-md-5"><!-- Image left -->
+                        <img class="img-fluid rounded-start p-2"
+                             style="width:200px;"
+                             src="https://d3ck8ztij7t71z.cloudfront.net/33/33952/{{ image }}">
+                    </div>
+                    <div class="col-md-7"><!-- Info right -->
+                        <div class="card-body">
+                            <h3 class="card-title">{{ title }}</h3>
+                            <p class="card-text">{{ description }}</p>
+                       </div><!-- end class .card-body -->
+                    </div>
+                </div><!-- end class .row -->
+                <hr>
+                <h3>Track &amp; Song Numbers</h3>
+                <p>The <strong>Track Number</strong> is the number of the track on the album.</p>
+                <p>The <strong>Song Number</strong> is the number of the song on the
+                    <a href="{{ url_for('songs') }}" title="Songs list">Songs</a> page.</p>
+            </div><!-- end class .card -->
+
+            <!-- Display Links Information -->
+            <div class="card mb-3 border border-dark col-md-7">
+                <div class="card-body">
+                    <h3 class="card-title">Links Information</h3>
+                    <p class="card-text">
+                        If a song has an information page, the song title is displayed in
+                        <strong>bold</strong>; if it doesn't, the note
+                        <span class="text-muted">(Song info unavailable)</span>
+                        is displayed under the song title.
+                    </p>
+                    <p class="card-text">
+                        If a song can be played, the
+                        <button type="button" class="btn btn-primary btn-sm">PLAY</button>
+                        button link is displayed.
+                    </p>
+                    <p class="card-text">
+                        If a song can be purchased, the
+                        <button type="button" class="btn btn-success btn-sm">BUY</button>
+                        button link is displayed.
+                    </p>
+                </div><!-- end class .card-body -->
+            </div><!-- end class .card -->
+        </section>
+
+        <section>
+            <!-- Display Album tracks table -->
+            <h2>Tracks</h2>
+            <table class="table table-bordered border-primary table-striped col-6">
+                <thead>
+                    <tr style="background-color:var(--khaki-200);">
+                        <th width="100">Track<br>Number</th>
+                        <th width="100">Song<br>Number</th>
+                        <th width="100">Song Title &amp; Info Link</th>
+                        <th width="50">Play Link</th>
+                        <th width="50">Buy Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in tracks %}
+                <!-- Row[0] Track Number                                        -->
+                <!-- Row[1] Song Number (see songs.csv)                         -->
+                <!-- Row[2] Song Title (if present, web page for Song Number)   -->
+                <!-- Row[3] Play Link (if present, uses player.php)             -->
+                <!-- Row[4] Buy Link (if present, uses broadjam.com)            -->
+                <tr>
+                    <td>{{ row[0] }}</td><!-- Track number -->
+                    <td>{{ row[1] }}</td><!-- Song number -->
+                    {% if row[1] != "" %}
+                        <!-- Link to song info page -->
+                         <th style="text-align:left;">
+                             <a href="{{ url_for('song', id=row[1]) }}"
+                                title="Song info">{{ row[2] }}</a><!-- Song detail button link -->
+                         </th>
+                   {% else %}
+                        <th style="text-align:left;">
+                            {{ row[2] }}<br>
+                            <span class="text-weight-light text-muted">(Song info unavailable)</span>
+                        </th>
+                    {% endif %}
+                    {% if row[3] != "" %}
+                        <td><a href="http://www.broadjam.com/player/player.php?hosting=1&play_file={{ row[3] }}"
+                               class="btn btn-primary btn-sm" role="button" title="Play link">PLAY</a></td>
+                    {% else %}
+<!--                         <td><button type="button" class="btn btn-secondary btn-sm" disabled>UNAVAILABLE</button></td>-->
+                        <td></td><!-- No button -->
+                    {% endif %}
+                    {% if row[4] == "" %}
+<!--                         <td><button type="button" class="btn btn-secondary btn-sm" disabled>UNAVAILABLE</button></td>-->
+                        <td></td><!-- No button -->
+                    {% else %}
+                        <td><a href="http://www.broadjam.com/shoppingcart/add.php?cit=is&ciid={{ row[4] }}"
+                               class="btn btn-success btn-sm" role="button" title="Buy link">BUY</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <p><a href="{{ url_for('index') }}"
+              class="btn btn-warning btn-lg" role="button">Return to Home page <span class="bi-house-fill"></span></a>
+            <a href="{{ url_for('albums') }}"
+               class="btn btn-warning btn-lg" role="button">Return to Albumns page <span class="bi-disc"></span></a>
+            <button type="button" class="btn btn-success btn-lg" role="button" value="Go Back!" onclick="history.back()">Go Back!</button>
+        </p>
+
+    </article>
+</div><!-- end class .container -->
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<style rel="stylesheet">
+    table {width:300px;background-color:white;}
+    thead th {text-align: center;}
+    thead th span {font-size: .9em; color:grey;}
+</style>
+{% endblock %}
+
+{% block title %}Dan Gribbin | Songs{% endblock %}
+
+{% block content %}
+<article class="container">
+    <section class="row m-2 p-2">
+
+        <h1>Dan Gribbin Songs</h1>
+
+        <table id="dg_songs_table" class="table table-bordered border-primary table-striped col-6">
+            <thead class="sticky-top"> <!-- No scroll header -->
+                <tr style="background-color:var(--khaki-200);">
+                    <th>Song Number</th>
+                    <th>Song Title &amp; Info Link</th>
+                    <th>Play Link</th>
+                    <th>Buy Link</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in songs %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <th>
+                    <a href="{{ url_for('song', id=row[0]) }}"
+                        title="Song Information on current page">{{ row[1] }}
+                    </a><!-- Song detail button link -->
+
+                </th>
+                <td><a href="http://www.broadjam.com/player/player.php?hosting=1&play_file={{ row[2] }}"
+                        class="btn btn-primary btn-sm" role="button" title="Play link">PLAY</a></td>
+                {% if row[3] != "" %}
+                <td><a href="http://www.broadjam.com/shoppingcart/add.php?cit=is&ciid={{ row[3] }}"
+                        class="btn btn-success btn-sm" role="button" title="Buy link">BUY</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</article>
+
+{% endblock %}

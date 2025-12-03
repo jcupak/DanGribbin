@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block styles %} 
+{{ super() }}
+{% endblock %}
+
+{% block title %}Dan Gribbin | Photos{% endblock %}
+
+{% block content %}
+
+  <section id="gallery" class="m-1 p-2">
+    
+    <h1>Dan Gribbin's Photo Gallery</h1>
+    
+    <hr>
+
+    <div class="container bg-light-subtle border rounded-1 p-1 mb-3">
+        <h3 class="fw-light">Dan Gribbin and Friends</h3>
+        <p class="text-muted">
+          Favorite photographs of Dan Gribbin with performers, friends, and family.
+        </p>
+        <p>Click on the left caret <span style="padding:0 3px; background-color:#cdcdcd;">&lsaquo;</span> to move to the previous picture,
+            the right caret <span style="padding:0 3px; background-color:#cdcdcd;">&rsaquo;</span> to move to the next picture,
+            or just wait and let the slide show run automagically.</p>
+    </div>
+
+    <!-- All carousel images are from the online cloudfront.net/33/33952/ folder -->
+    <div id="Dan_Gribbin_Photos" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <!-- NO carousel-indicators   -->
+        <div class="carousel-inner">
+        {% for photo in photos %}
+            {% if photo[0] == '1' %}
+            <!-- Long pause after first photo -->
+            <div class="carousel-item active data-bs" data-bs-interval="10000">
+            {% else %}
+            <!-- Shorter pause after remaining photos -->
+            <div class="carousel-item" data-bs-interval="5000">
+            {% endif %}
+                <div class="card bg-light p-3">
+                    <div class="row g-0">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-4 border"><!-- Left image -->
+                            <img src="https://d3ck8ztij7t71z.cloudfront.net/33/33952/{{ photo[1] }}"
+                                 class="img-fluid p-3 border rounded-start" alt="Dan's photo{{ photos[1] }}"
+                                 style="background-color:white;">
+                        </div><!-- end class .col-md-4 -->
+                        <div class="col-md-6 mx-2 p-3 border rounded-2" style="background:white;"><!-- Right contents -->
+                            <div class="card-body">
+                                {% if photo[2] != '' %}
+                                <h3 class="card-header mb-2">{{ photo[2] }}</h3>
+<!--                                <hr>-->
+                                {% endif %}
+                                <dl class="card-text"><!-- Display list of terms and descriptions -->
+                                    {% if photo[3] != '' %}
+                                        <dt>Copyright:</dt>
+                                        <dd>{{ photo[3] }}</dd>
+                                    {% endif %}
+                                    {% if photo[4] != '' %}
+                                        <dt>Photographer/Artist:</dt>
+                                        <dd>{{ photo[4] }}</dd>
+                                    {% endif %}
+                                    {% if photo[5] != '' %}
+                                        <dt>Description:</dt>
+                                        <dd>{{ photo[5] }}</dd>
+                                    {% endif %}
+                                </dl>  <!-- end class .card-tex -->
+                            </div><!-- end class .card-body -->
+                        </div><!-- end class .col-md-6 -->
+                        <div class="col-md-1">
+                        </div>
+                    </div><!-- end class .row -->
+                </div><!-- end class .card -->
+            </div><!-- end class .carousel-item -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#Dan_Gribbin_Photos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#Dan_Gribbin_Photos" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        {% endfor %}
+        </div><!-- end class .carousel-inner -->
+    
+    </div><!-- end class .carousel -->
+
+  </section>
+
+{% endblock %}

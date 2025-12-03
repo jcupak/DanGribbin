@@ -1,0 +1,136 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<style rel="stylesheet">
+</style>
+{% endblock %}
+
+{% block title %}Dan Gribbin - Add Song{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <article class="row my-1">
+
+    <h1>Dan Gribbin - Add Song</h1>
+
+    <!-- Song number, name, play link, and optional buy link section-->
+    <section class="container">
+      <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+        <div class="card-body col col-md-auto">
+          <fieldset>
+            <legend>Song Information</legend>
+            <label for="song-number">Song Number:</label>
+            <input type="number" name="song-number" id="song-number"><br>
+            <label for="song-name">Song Name:</label>
+            <input type="text" name="song-name" id="song-name"><br>
+            <label for="play-link">Play Link:</label>
+            <input type="url" name="play-link" id="play-link"><br>
+            <label for="buy-link">Buy Link:</label>
+            <input type="url" name="buy-link" id="buy-link">
+          </fieldset>
+    </section>
+
+    <!-- Credits section -->
+    <section class="container">
+      <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+        <div class="card-body col col-md-auto">
+          <fieldset>
+            <legend>Credits</legend>
+            /* <h3 class="card-title pb-2 border-bottom">Credits</h3> */
+            <label for="lyric-credits">Lyric Credits:</label>
+            <input type="text" name="lyric-credits" id="lyric-credits">
+            <label for="music-credits">Music Credits:</label>
+            <input type="text" name="music-credits" id="music-credits">
+            <label for="producer-credits">Producer Credits:</label>
+            <input type="text" name="producer-credits" id="producer-credits">
+            <label for="publisher-credits">Publisher Credits:</label>
+            <input type="text" name="publisher-credits" id="publisher-credits">
+            <label for="performance-credits">Performance Credits:</label>
+            <input type="text" name="performance-credits" id="performance-credits">
+            <label for="label-credits">Label Credits:</label>
+            <input type="text" name="label-credits" id="label-credits">
+          </fieldset>
+        </div><!-- end class .card-body -->
+      </div><!-- end class .card -->
+    </section>
+
+    <!-- Description section -->
+    <section class="container">
+      <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+        <div class="card-body col col-md-auto">
+          <fieldset>
+            <legend>Description</legend>
+            /* <h3 class="card-title pb-2 border-bottom">Description</h3> */
+            <label for="short-description">Short Song Description:</label>
+            <textarea name="short-description" id="short-description" cols="30" rows="10"></textarea><br>
+            <label for="long-description">Long Song Description:</label>
+            <textarea name="long-description" id="long-description" cols="30" rows="10"></textarea><br>
+            <label for="song-story">Story Behind the Song:</label>
+            <textarea name="song-story" id="song-story" cols="30" rows="10"></textarea>
+          </fieldset>
+        </div><!-- end class .card_body -->
+      </div><!-- end class .card -->
+    </section>
+
+    <!-- Metadata section -->
+    <section class="container">
+      <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+        <div class="card-body col col-md-auto">
+          <fieldset>
+            <legend>Metadata</legend>
+            /* <h3 class="card-title pb-2 border-bottom">Metadata</h3> */
+            <label for="song-length">Song Length:</label>
+            <input type="text" name="song-length" id="song-length"><br>
+            <label for="primary-genre">Primary Genre:</label>
+            <input type="text" name="primary-genre" id="primary-genre"><br>
+            <label for="tempo-1">Tempo/Feel 1:</label>
+            <input type="text" name="tempo-1" id="tempo-1"><br>
+            <label for="tempo-2">Tempo/Feel 2:</label>
+            <input type="text" name="tempo-2" id="tempo-2"><br>
+            <label for="lead-vocal">Lead Vocal:</label>
+            <input type="text" name="lead-vocal" id="lead-vocal"><br>
+            <label for="subject-matter-1">Subject Matter 1:</label>
+            <input type="text" name="subject-matter-1" id="subject-matter-1"> <br>
+            <label for="subject-matter-2">Subject Matter 2:</label>
+            <input type="text" name="subject-matter-2" id="subject-matter-2"><br>
+            <label for="mood-1">Mood 1:</label>
+            <input type="text" name="mood-1" id="mood-1"><br>
+            <label for="mood-2">Mood 2:</label>
+            <input type="text" name="mood-2" id="mood-2"><br>
+            <label for="language">Language:</label>
+            <input type="text" name="language" id="language"><br>
+            <label for="era">Era:</label>
+            <input type="text" name="era" id="era">
+          </fieldset>
+        </div><!-- end class .card-body -->
+      </div><!-- end class .card -->
+    </section>
+
+    <!-- Lyrics section -->
+    <section class="container">
+      <div class="card border-dark ps-0 mt-0 mx-auto shadow">
+        <div class="card-body col col-md-auto">
+          <fieldset>
+            <legend>Lyrics</legend>
+            /* <h3 class="card-title pb-2 border-bottom">Lyrics</h3> */
+            <label for="lyrics">Lyrics</label>
+            <input type="file" name="lyrics" id="lyrics">
+          </fieldset>
+        </div><!-- end class .card-body -->
+      </div><!-- end class .card -->
+    </section><!-- end class .container -->
+
+    <!-- Buttons to other web pages -->
+    <p>
+      <a href="{{ url_for('index') }}" class="btn btn-warning btn-lg" role="button">Return to Home page <span
+          class="bi-house-fill"></span></a>
+      <a href="{{ url_for('songs') }}" class="btn btn-warning btn-lg" role="button">Return to Songs page <span
+          class="bi-music-note-beamed"></span></a>
+    </p>
+
+  </article>
+</div><!-- end class .container -->
+
+{% endblock %}

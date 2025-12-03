@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}}
+
+{% block styles %}
+{{ super() }}
+<style rel="stylesheet">
+</style>
+{% endblock %}
+
+{% block title %}Dan Gribbin | Links{% endblock %}
+
+{% block content %}
+
+<section>
+
+        <h1>Dan Gribbin - Links</h1>
+
+        {% for link in links %}
+        <div class="card bg-light p-0 my-2 shadow">
+            <div class="card-body">
+            <!-- link[0] Link Title -->
+            <!-- link[1] Link HREF  -->
+            <!-- link[2] Link Info  -->
+            <h3 class="card-title pb-2 border-bottom">
+                <a href="{{ link[1] }}" title="Open on a new tab">
+                    {{ link[0] }}
+               </a>
+                {% if link[1].startswith('www.cdbaby.com') %}
+                    <span class="text-danger">Broken link</span>
+                {% endif %}
+            </h3>
+            <p class="card-text">{{ link[2] }}</p>
+            </div><!-- end class .card-body -->
+        </div><!-- end class .card -->
+        {% endfor %}
+
+        <p>
+            <a href="{{ url_for('index') }}"
+               class="btn btn-warning btn-lg" role="button">
+                Return to Home page
+                <span class="bi-house-fill"></span>
+            </a>
+        </p>
+
+</section>
+{% endblock %}
