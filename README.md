@@ -5,8 +5,8 @@
 
 Not long ago, Dan Gribbin appeared at our church to give a talk and perform some of his songs. During the talk, he mentioned that he had a web site with more information about him and his songs.
 
-![Old songs.html web page](old_website_screenshots/old%20songs.html%20screen.png)
-Figure 1. Old **songs.html** web page
+![Original songs.html web page](archive/assets/media/screens/songs_screen_clipped.png)
+Figure 1. Original **songs.html** web page
 
 I recently completed a Python course in which I learned how to create a dynamic web site from data files and how to "scrape" information from a web site's underlying HTML. 
 
@@ -14,8 +14,8 @@ After viewing Dan Gribbin's web site, I saw that the underlying HTML was based o
 
 ### Scraping the Data
 
-![Old songs.html source code](old_website_screenshots/old%20songs.html%20code.png)
-Figure 2. Old **songs.html** source
+![Original songs.html source code](archive/assets/media/screens/songs_code_clipped.png)
+Figure 2. Original **songs.html** web page HTML code.
 
 In order to create data files from the contents of the web pages, I wrote Python code to "scrape" the web pages. Fortunately, the data I was looking for was always placed inside table components with a repeated format. I was able to extract the data and place it in a CSV (Comma Separated Value) text file and sort it. 
 
@@ -41,8 +41,11 @@ The resultant web site consists of fourteen (14) web pages: about, album (single
 
 Because the web site used Bootstrap for content layout and styles, only three CSS (Cascading Style Sheets) were written: **dg_gradient_palettes.css** (colors from original site), **dg_styles.css** (web site styles), and **dg_contact_form_postcard.css** (fonts and formats to define the contact page).
 
-![Old songs.html source code](old_website_screenshots/new%20songs.html%20screen.png)
-Figure 3. New **songs.html** web page.
+![New songs.html source code](results/screens/songs.html%20template.png)
+Figure 3. New **songs.html** HTML template page.
+
+![New songs.html web site page](results/screens/songs.png)
+Figure 4. New **songs.html** web site page.
 
 ### Comparison Statistics
 
@@ -52,7 +55,7 @@ The redesigned "New" HTML files contained 1,114 lines, including a **layout.html
 
 Table 1. Web Site Metrics
 Web Site Page | Old HTML Lines | New HTML Lines | New py Lines | Total New Lines
---------- | -------- | -------- | ------ | -----
+--------- | --------: | --------: | ------: | -----:
 albums.html | 161 | 63 | 6 | 69
 album.html | 265 | 133 | 14 | 147
 bio.html | 130 | 39 | 3 | 42
@@ -66,39 +69,37 @@ news.html | 1762 | 34 | 3 | 37
 photos.html | 292 | 79 | 6 | 85
 songs.html | 462 | 52 | 6 | 58
 song.html | 258 | 158 | 14 | 172
-**totals** | **3,393** | **1,114** | **77** | **1.101**
+**Totals** | **3,393** | **1,114** | **77** | **1,101**
 
 ### Data Files
 
 Data needed to populate the web pages was "scraped" from the old HTML pages through the use of Python procedures. These procedures were used only once to extract the required data and place it in CSV or Text files.
 
 Table 2. Get Data Procedures Lines of Code
-Lines | Python File Name
------ | ----------------
-  141 | get_album_data.py
-   34 | get_albums_data.py
-  107 | get_event_data.py
-   58 | get_events_data.py
-   44 | get_links_data.py
-   88 | get_news_data.py
-  105 | get_photo_data.py
-  238 | get_song_data.py
-   46 | get_songs_data.py
-  862 | **total**
+Python File Name | Lines
+---------------- | -----:
+get_album_data.py | 141
+get_albums_data.py | 34
+get_event_data.py | 107
+get_events_data.py | 58
+get_links_data.py | 44
+get_news_data.py | 88
+get_photo_data.py | 105
+get_song_data.py | 238
+get_songs_data.py | 46
+**Total** | **862**
 
 Table 3. Data Files
 Data Item | CSV Files | Text Files
---------- | --------- | ----------
+--------- | ---------: | ----------:
    Albums |         6 |          4
    Events |         2 |         84
    Songs  |         3 |         48
 **Totals** |   **11** |      **136**
 
-
-
 ## Conclusion
 
-The hardest part of this project was "scraping" the data from the original HTML files. Tables were nested inside tables; only by identifying the specific height or width attributes in the table **\<tr\>** rows, **\<th\>** headings, and **\<td\>** data columns was it finally possible to identify the and extract relevant data. 
+The hardest part of this project was "scraping" the data from the original HTML files. Tables were nested inside tables; only by identifying the specific height or width attributes in the table **\<tr\>** rows, **\<th\>** headings, and **\<td\>** data columns was it finally possible to identify, extract, and save the relevant data. 
 
 Links to audio files for listening and purchasing were sometimes broken, making automation extraction difficult. Each album and song links needed to be validated. Song lyrics were extracted into individual text files, and identified by song number. Events were likewise extracted into individual text files and identified by event number.
 
