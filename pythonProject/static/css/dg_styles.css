@@ -1,0 +1,79 @@
+html {
+    background-color: var(--orange-200);
+}
+body {
+    background-color: var(--khaki-500);
+    margin          : 20pt;
+}
+header,
+footer {
+    background-color: var(--khaki-100);
+}
+.navbar-brand {
+    font-weight     : bold;
+}
+section {
+    padding         : 10px;
+}
+aside {
+    background-color: var(--khaki-200);
+}
+a:link {
+    text-decoration : none;
+    color           : var(--orange-100);
+}
+a.btn-primary,
+a.btn-success {
+    color           : white;
+}
+a.btn-warning {
+    color           : black;
+}
+a:hover {
+    text-decoration : underline;
+    color           : var(--gray-200);
+}
+li.active {font-weight:bold;}
+            .social-links {
+    padding:0 1px;
+    margin: 0 2px;
+}
+
+/* Table stuff */
+table.table-bordered {
+    border:1px solid var(--khaki-700);
+    margin-top:20px;
+}
+table.table-bordered > thead > tr > th {
+    border:1px solid var(--khaki-700);
+}
+table.table-bordered > tbody > tr > th,
+table.table-bordered > tbody > tr > td{
+    border:1px solid
+}
+table.table-bordered > tbody > tr > th > a {
+    color : var(--gray-500);
+}
+table.table-bordered > tbody > tr > th,
+table.table-bordered > tbody > tr > td {
+    text-align : center;
+    vertical-align: middle;
+}
+table.table-bordered > tbody > tr > th {
+    text-align : left;
+}
+
+.bi-facebook, .bi-youtube {
+    font-size       : 2rem;
+    background-color: white;
+    padding         : 0 2px;
+    border-radius   : 5px;
+}
+.bi-facebook {
+    border          : solid 1px var(--facebook-blue);
+    color           : var(--facebook-blue);
+}
+.bi-youtube {
+    border          : solid 1px var(--youtube-red);
+    color           : var(--youtube-red);
+}

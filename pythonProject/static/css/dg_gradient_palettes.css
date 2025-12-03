@@ -1,0 +1,32 @@
+/* Gradient Palettes */
+:root {
+ /* Khaki */
+  --khaki-100: #CFB98D;
+  --khaki-200: #C2AF87; 
+  --khaki-300: #B5A580; 
+  --khaki-400: #A89B7A; 
+  --khaki-500: #9A9073; 
+  --khaki-600: #8D866D;
+  --khaki-700: #807C66;
+
+  /* Gray */
+  --gray-100: #ffffff;
+  --gray-200: #D5D5D5; 
+  --gray-300: #AAAAAA;
+  --gray-400: #808080;
+  --gray-500: #555555;
+  --gray-600: #2B2B2B;
+  --gray-700: #000000;
+
+  /* Orange */
+  --orange-100: #90522c; /* --link-color       */
+  --orange-200: #7a4525; /* --background-color */
+
+  /* Vermilion */
+  --vermilion-100: #ffd2c9;
+
+  /* Social Icon Colors */
+  --facebook-blue: #4267B2;
+  --youtube-red:   #FF0000;
+
+}
