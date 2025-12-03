@@ -1,0 +1,103 @@
+TD
+{
+    FONT-SIZE: 11px;
+    COLOR: black;
+    FONT-FAMILY: Arial
+}
+.header1
+{
+    FONT-WEIGHT: 600;
+    FONT-SIZE: 12px;
+    COLOR: black;
+    FONT-FAMILY: Arial;
+   
+}
+.header2
+{
+    FONT-SIZE: 24px;
+    COLOR: black;
+    FONT-FAMILY: Arial
+}
+.header3
+{
+    FONT-WEIGHT: 600;
+	FONT-SIZE: 13px;
+    FONT-FAMILY: Arial
+}
+.greyed
+{
+    COLOR: #3c3c3c
+}
+A:link
+{
+    COLOR: #90522C;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+A:visited
+{
+    COLOR: #90522C;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+A:active
+{
+    COLOR: #90522C;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+A:hover
+{
+    COLOR: #3c3c3c;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+A:link.aff
+{
+    COLOR: #FFFFFF;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+A:visited.aff
+{
+    COLOR: #FFFFFF;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+A:active.aff
+{
+    COLOR: #FFFFFF;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+A:hover.aff
+{
+    COLOR: #FFD2C9;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+BODY
+{
+    BACKGROUND-COLOR: #7a4525
+}
+.bkg1
+{
+    BACKGROUND-COLOR: #998968
+}
+.bkg2
+{
+    BACKGROUND-COLOR: #b09d78
+}
+.bkg3
+{
+    BACKGROUND-COLOR: #b4a17b
+}
+.bkg4
+{
+    BACKGROUND-COLOR: #cfb98d
+}
+.bkg5
+{
+    BACKGROUND-COLOR: #807c66
+}
+
