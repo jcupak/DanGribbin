@@ -1,0 +1,5 @@
+       3 album_0_info.txt
+       4 album_1_info.txt
+       3 album_2_info.txt
+       3 album_3_info.txt
+      13 total
